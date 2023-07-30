@@ -27,11 +27,11 @@ S3 bucket is used by kubernetes to persist cluster state, lets create s3 bucket 
 **Note:**  Make sure you choose bucket name that is uniqe accross all aws accounts
 
 ```sh
-aws s3 mb s3://javahome.in.k8s --region ap-south-1
+aws s3 mb s3://yours3name.in.k8s --region ap-south-1
 ```
 ### 6. Create private hosted zone in AWS Route53
  1. Head over to aws Route53 and create hostedzone
- 2. Choose name for example (javahome.in)
+ 2. Choose name for example (example.in)
  3. Choose type as privated hosted zone for VPC
  4. Select default vpc in the region you are setting up your cluster
  5. Hit create
@@ -44,8 +44,8 @@ Open .bashrc file
 Add following content into .bashrc, you can choose any arbitary name for cluster and make sure buck name matches the one you created in previous step.
 
 ```sh
-export KOPS_CLUSTER_NAME=javahome.in
-export KOPS_STATE_STORE=s3://javahome.in.k8s
+export KOPS_CLUSTER_NAME=mycluster.in
+export KOPS_STATE_STORE=s3://mycluster.in.k8s
 ```
 Then running command to reflect variables added to .bashrc
 ```
@@ -85,7 +85,7 @@ For the above above command, you might see validation failed error initially whe
 
 ### 11. To connect to the master
 ```sh
-ssh admin@api.javahome.in
+ssh admin@api.mycluster.in
 ```
 # Destroy the kubernetes cluster
 ```sh
